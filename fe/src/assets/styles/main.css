@@ -1,0 +1,35 @@
+html {
+  @apply antialiased min-h-full;
+}
+
+body {
+  font-family: "Fira Sans", sans-serif;
+}
+
+.fadein {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.fadeinUp {
+  animation: fadeInUp 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
