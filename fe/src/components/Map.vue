@@ -5,6 +5,14 @@
         <h1>{{ selectedHost.location }}</h1>
         <h1 class="text-3xl font-bold text-white">{{ selectedHost.name }}</h1>
         <p class="text-white mt-3">{{ selectedHost.description }}</p>
+        <p v-if="selectedHost.site_url" class="pt-2" target="_BLANK">
+          <a
+            :href="selectedHost.site_url"
+            class="button text-blue-500 underline"
+          >
+            {{ selectedHost.site_label }}</a
+          >
+        </p>
 
         <div>
           <h3 class="text-4xl font-bold mt-10">
@@ -40,7 +48,11 @@
       >
         <CustomMarker :options="marker" v-for="marker in sampleHosts">
           <div style="text-align: center">
-            <MapMarker @click="toggleModal(marker)" />
+            <MapMarker
+              @click="toggleModal(marker)"
+              :marker="marker"
+              :inspecting="inspecting"
+            />
           </div>
         </CustomMarker>
       </GoogleMap>
@@ -66,6 +78,10 @@ export default {
       default: () => {
         return { lat: 43.01107, lng: -79.617015 };
       },
+    },
+    inspecting: {
+      type: Boolean,
+      default: false,
     },
   },
 

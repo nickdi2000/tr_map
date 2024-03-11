@@ -31,12 +31,14 @@ const sampleHosts = [
   },
   {
     name: "General Trivia",
-    site_url: "https://googe.com/",
+    site_url:
+      "https://www.google.com/search?q=trivia+at+queenshead+burlington&rlz=1C5CHFA_enCA1060CA1060&oq=trivia+at+queenshead+burlington&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCTcxMzBqMGoxNagCALACAA&sourceid=chrome&ie=UTF-8",
     site_label: "Google It",
-    description: "New category every week!",
+    description:
+      "Great food & drinks? We have Trivia Night at the Queens Head every Wednesday at 7:30pm.",
     day: "Wednesday",
     interval: "weekly",
-    time: "7:00 PM",
+    time: "7:30 PM",
     location: "The Queens Head Burlington",
     position: {
       lat: 43.684143499829055,

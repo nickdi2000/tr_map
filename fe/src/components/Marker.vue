@@ -1,5 +1,11 @@
 <template>
   <div class="loaderDiv">
+    <div
+      v-if="inspecting"
+      class="fade fadeinUp marker-label mb-4 bg-gray-900 text-white p-2 rounded-sm"
+    >
+      {{ marker.name }}
+    </div>
     <div class="loader" :class="enlarged ? 'enlarge' : ''"></div>
   </div>
 </template>
@@ -7,7 +13,8 @@
 <script>
 export default {
   props: {
-    loading: false,
+    inspecting: false,
+    marker: Object,
   },
   data() {
     return {

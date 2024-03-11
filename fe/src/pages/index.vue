@@ -7,7 +7,7 @@
     />
     <header class="absolute inset-x-0 top-0">
       <div class="container mx-auto flex justify-end p-4">
-        <Map :coords="coords" />
+        <Map :coords="coords" :inspecting="inspecting" />
       </div>
     </header>
     <!-- 
@@ -43,21 +43,44 @@
           <AutoComplete @changed="handleCoordsChange" />
         </div>
 
-        <div class="flex justify-center space-x-4 pb-10">
-          <button
+        <div class="flex justify-center align-items-center space-x-4 pb-10">
+          <!-- <button
             type="button"
             @click="inspecting = !inspecting"
             class="text-white bg-gradient-to-r font-bold text-lg from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
           >
             Search
-          </button>
+          </button> -->
 
-          <button
-            @click="getUserLocation()"
-            class="text-white bg-gradient-to-r font-bold text-lg from-gray-500 to-gray-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-          >
-            Use Current Location
-          </button>
+          <div>
+            <div class="text-center mt-4 text-xs text-gray-400">OR</div>
+            <button
+              @click="getUserLocation()"
+              class="flex mt-3 text-white bg-gradient-to-r font-bold from-gray-700 to-gray-800 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                />
+              </svg>
+
+              <span class="text-lg">Use Current Location</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -86,7 +109,7 @@ export default defineComponent({
     },
     handleCoordsChange(placeData) {
       this.inspecting = true;
-      const cords = {
+      const coords = {
         lat: placeData.geometry.location.lat(),
         lng: placeData.geometry.location.lng(),
       };
